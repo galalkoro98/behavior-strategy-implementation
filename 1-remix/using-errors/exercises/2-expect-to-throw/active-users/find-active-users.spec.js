@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/extensions
 import { findActiveUsers } from './find-active-users.js';
 
 describe('findActiveUsers: returns all users with .active === true', () => {
@@ -75,19 +76,18 @@ describe('findActiveUsers: returns all users with .active === true', () => {
       const notPassingAnArray = () => findActiveUsers([{}, null, {}]);
       expect(notPassingAnArray).toThrowError(TypeError);
       expect(notPassingAnArray).toThrowError(
-        'users is not an array of objects'
+        'users is not an array of objects',
       );
     });
     it('throws an error if the array is not all user objects', () => {
-      const notPassingAnArray = () =>
-        findActiveUsers([
-          { userName: '', name: '', active: true },
-          {},
-          { userName: '', name: '', active: false },
-        ]);
+      const notPassingAnArray = () => findActiveUsers([
+        { userName: '', name: '', active: true },
+        {},
+        { userName: '', name: '', active: false },
+      ]);
       expect(notPassingAnArray).toThrowError(TypeError);
       expect(notPassingAnArray).toThrowError(
-        'users is not an array of user objects'
+        'users is not an array of user objects',
       );
     });
   });
